@@ -26,7 +26,13 @@ class PartiallyOrderedSet
 		return null
 	end
 
-	
+	fun addRelation(lower: Element, higher: Element): Bool do
+		if not elements.has(lower) or elements.has(higher) then return false
+		for element in elements do
+			if element == lower then element.parents.addParent(higher)
+			return true
+		end
+	end
 
 	private fun fetchForElement(current: Element, searched: Element, response: List[Bool]) do 
 
@@ -39,6 +45,10 @@ class PartiallyOrderedSet
 				fetchForElement(parent, searched, response)
 			end
 		end
+	end
+
+	fun boolFromBoolList(boolList: List[Bool]): Bool do
+		if boolList.has(true) then return true else return false
 	end
 
 	fun isComparable(element1: Element, element2: Element): Bool do
