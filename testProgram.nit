@@ -1,4 +1,4 @@
-import partiallyOrderedModule
+import partiallyOrderedSetModule
 
 # Créer un ordre partiel vide.
 var poSet = new PartiallyOrderedSet()
@@ -33,3 +33,5 @@ var poSet = new PartiallyOrderedSet()
 
 # Fusion de deux ordres.
 
+
+print "Evertything went better than expected."
