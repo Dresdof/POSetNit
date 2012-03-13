@@ -95,6 +95,36 @@ class PartiallyOrderedSet
 		return list
 	end
 
+	private fun recursiveFetchForParents(current: Element, response: List[Element]) do
+		if not current.parents.is_empty then
+			for element in current.parents do
+				if not response.has(element) then response.push(element)
+				recursiveFetchForParents(element, response)
+			end
+		end
+	end
+
+	private fun recursiveFetchForChildren(current: Element, response: List[Element]) do
+		if not current.children.is_empty then
+			for element in current.children do
+				if not response.has(element) then response.push(element)
+				recursiveFetchForChildren(element, response)
+			end
+		end
+	end
+
+	fun getParents(element: Element): List[Element] do
+		var list = new List[Element]
+		recursiveFetchForParents(element, list)
+		return list
+	end
+	
+	fun getChildren(element: Element): List[Element] do
+		var list = new List[Element]
+		recursiveFetchForChildren(element, list)
+		return list
+	end
+
 	fun merge(poSet: PartiallyOrderedSet) do
 		
 	end
