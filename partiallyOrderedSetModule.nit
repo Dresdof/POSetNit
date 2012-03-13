@@ -14,15 +14,22 @@ class PartiallyOrderedSet
 		elements.push(element)
 	end
 
-	fun removeElement(element: Element): Bool do
-		return false
+	fun removeElementByName(elementName: String): Bool do
+		var element = getElementByName(elementName)
+		if element != null then	elements.remove(element) else return false
+		return true
 	end
 
-	fun renameElement(element: Element, newName: String): Bool do
-		return false
+	fun renameElementByName(elementName: String, newName: String): Bool do
+		var element = getElementByName(elementName)
+		if element != null then element.rename(newName) else return false
+		return true
 	end
 
 	fun getElementByName(elementName: String): nullable Element do
+		for element in elements do
+			if element.name == elementName then return element
+		end
 		return null
 	end
 
@@ -63,8 +70,12 @@ class PartiallyOrderedSet
 		return elements.has(element1) and elements.has(element2) 
 	end
 
-	fun isComparable(element1: Element, element2: Element): Bool do
-		return false
+	fun getMaximumElements: List[Element] do
+		var list = new List[Element]
+		for element in elements do
+			if element.parents.is_empty then list.push(element)
+		end
+		return list
 	end
 
 	fun merge(poSet: PartiallyOrderedSet) do
@@ -76,7 +87,11 @@ class PartiallyOrderedSet
 	end
 
 	redef fun to_s: String do
-		return "Not yet implemented"
+		var str = ""
+		for element in elements do
+			str += element.to_s
+		end
+		return str
 	end
 
 	redef fun ==(o) do
