@@ -126,7 +126,25 @@ class PartiallyOrderedSet
 	end
 
 	fun merge(poSet: PartiallyOrderedSet) do
-		
+		for	hisElement in poSet.elements do
+
+			var myElement = getElementByName(hisElement.name)
+
+			if myElement != null then
+				for currentParent in hisElement.parents do
+					if not myElement.hasChild(currentParent) and not myElement.hasParent(currentParent) then
+						myElement.parents.push(currentParent)
+					end
+				end
+				for currentChild in hisElement.children do
+					if not myElement.hasParent(currentChild) and not myElement.hasChild(currentChild) then 
+						myElement.children.push(currentChild)
+					end
+				end
+			else 
+				elements.push(hisElement)
+			end
+		end
 	end
 
 	fun includes(poSet: PartiallyOrderedSet): Bool do
@@ -142,7 +160,7 @@ class PartiallyOrderedSet
 	redef fun to_s: String do
 		var str = ""
 		for element in elements do
-			str += element.to_s
+			str += element.to_s + "\n"
 		end
 		return str
 	end

@@ -3,7 +3,7 @@ import partiallyOrderedSetModule
 print "-- Début du programme --"
 
 # Créer un ordre partiel vide.
-var poSet = new PartiallyOrderedSet()
+var poSet = new PartiallyOrderedSet
 
 # Ajouter des éléments.
 var eltA = new Element ("A")
@@ -71,7 +71,7 @@ print poSet
 # Tester l'égalité entre deux ordres.
 
 # Tester l'inclusion d'un ordre dans un autre.
-var poSet2 = new PartiallyOrderedSet()
+var poSet2 = new PartiallyOrderedSet
 
 poSet2.addElement(eltB)
 poSet2.addElement(eltD)
@@ -85,5 +85,29 @@ poSet2.addElement(eltJ)
 #print poSet2.includes(poSet)
 
 # Fusion de deux ordres.
+var poSet3 = new PartiallyOrderedSet
+
+var eltA2 = new Element("A")
+var eltC2 = new Element("C")
+var eltF2 = new Element("F")
+var eltL = new Element("L")
+var eltK = new Element("K")
+
+poSet3.addElement(eltA2)
+poSet3.addElement(eltC2)
+poSet3.addElement(eltF2)
+poSet3.addElement(eltL)
+poSet3.addElement(eltK)
+
+poSet3.addRelation(eltA2, eltC2)
+poSet3.addRelation(eltK, eltC2)
+poSet3.addRelation(eltF2, eltC2)
+poSet3.addRelation(eltL, eltF2)
+
+print poSet3
+
+poSet.merge(poSet3)
+print poSet
+
 
 print "-- Fin du programme --"
