@@ -30,6 +30,7 @@ class Element
 		if parents.length != o.parents.length then return false
 		for i in [0..parents.length] do
 			if parents[i] != o.parents[i] then return false
+			if children[i] != o.children[i] then return false
 		end
 		return true
 	end
