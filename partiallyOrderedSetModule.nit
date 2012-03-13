@@ -129,8 +129,14 @@ class PartiallyOrderedSet
 		
 	end
 
-	fun isIncluding(poSet: PartiallyOrderedSet): Bool do
-		return false
+	fun includes(poSet: PartiallyOrderedSet): Bool do
+		for element in poSet.elements do
+			var tmp = getElementByName(element.name)
+			if tmp != null then
+				if tmp != element then return false
+			else return false
+		end
+		return true
 	end
 
 	redef fun to_s: String do

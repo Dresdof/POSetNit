@@ -71,6 +71,18 @@ print poSet
 # Tester l'égalité entre deux ordres.
 
 # Tester l'inclusion d'un ordre dans un autre.
+var poSet2 = new PartiallyOrderedSet()
+
+poSet2.addElement(eltB)
+poSet2.addElement(eltD)
+poSet2.addElement(eltE)
+poSet2.addElement(eltJ)
+
+#print "poSet2 est-il inclus dans poSet ? :"
+#print poSet.includes(poSet2)
+
+#print "poSet est-il inclus dans poSet2 ? :"
+#print poSet2.includes(poSet)
 
 # Fusion de deux ordres.
 
