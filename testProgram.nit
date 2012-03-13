@@ -1,26 +1,54 @@
 import partiallyOrderedSetModule
 
+print "-- Début du programme --"
+
 # Créer un ordre partiel vide.
 var poSet = new PartiallyOrderedSet()
 
 # Ajouter des éléments.
-
-var eltA = new Element("A")
-var eltB = new Element("B")
+var eltA = new Element ("A")
+var eltB = new Element ("B")
+var eltC = new Element ("C")
+var eltD = new Element ("D")
+var eltE = new Element ("E")
+var eltF = new Element ("F")
+var eltG = new Element ("G")
+var eltH = new Element ("H")
+var eltI = new Element ("I")
+var eltJ = new Element ("J")
 
 poSet.addElement(eltA)
 poSet.addElement(eltB)
-
-poSet.addRelation(eltB, eltA)
-print poSet.isLower(eltA, eltB)
-
-# Lister les éléments.
+poSet.addElement(eltC)
+poSet.addElement(eltD)
+poSet.addElement(eltE)
+poSet.addElement(eltF)
+poSet.addElement(eltG)
+poSet.addElement(eltH)
+poSet.addElement(eltI)
+poSet.addElement(eltJ)
 
 # Ajouter des relations.
+poSet.addRelation(eltB, eltA)
+poSet.addRelation(eltC, eltA)
+poSet.addRelation(eltD, eltB)
+poSet.addRelation(eltE, eltB)
+poSet.addRelation(eltJ, eltD)
+poSet.addRelation(eltJ, eltE)
+poSet.addRelation(eltF, eltC)
+poSet.addRelation(eltG, eltF)
+poSet.addRelation(eltH, eltG)
+poSet.addRelation(eltI, eltH)
+
+
+# Lister les éléments.
+#print poSet
 
 # Afficher une relation.
+#print poSet.isLower(eltA,eltD)
 
 # Afficher les éléments maximaux.
+#print poSet.getMaximumElements
 
 # Afficher les éléments minimaux.
 
@@ -42,5 +70,4 @@ print poSet.isLower(eltA, eltB)
 
 # Fusion de deux ordres.
 
-
-print "Evertything went better than expected."
+print "-- Fin du programme --"
