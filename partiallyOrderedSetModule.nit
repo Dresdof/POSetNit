@@ -35,10 +35,19 @@ class PartiallyOrderedSet
 
 	fun addRelation(lower: Element, higher: Element): Bool do
 		if not setHasBoth(lower, higher) then return false
+		
+		var parentAdded = false
+		var childAdded = false
+	
 		for element in elements do
+			if parentAdded and childAdded then return true
 			if element == lower then 
 				element.addParent(higher)
-				return true
+				parentAdded = true
+			end
+			if element == higher then 
+				element.addChild(lower)
+				childAdded = true
 			end
 		end
 		return false
@@ -74,6 +83,14 @@ class PartiallyOrderedSet
 		var list = new List[Element]
 		for element in elements do
 			if element.parents.is_empty then list.push(element)
+		end
+		return list
+	end
+
+	fun getMinimumElements: List[Element] do
+		var list = new List[Element]
+		for element in elements do
+			if element.children.is_empty then list.push(element)
 		end
 		return list
 	end

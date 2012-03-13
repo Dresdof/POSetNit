@@ -3,15 +3,21 @@ module elementModule
 class Element
 	
 	var parents: List[Element]
+	var children: List[Element]
 	var name: String
 
 	init(name: String) do 
 		self.name = name
 		self.parents = new List[Element]
+		self.children = new List[Element]
 	end
 
 	fun addParent(element: Element) do
 		parents.push(element)
+	end
+
+	fun addChild(element: Element) do
+		children.push(element)
 	end
 
 	fun rename(newName: String) do

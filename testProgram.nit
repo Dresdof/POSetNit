@@ -51,6 +51,7 @@ poSet.addRelation(eltI, eltH)
 #print poSet.getMaximumElements
 
 # Afficher les éléments minimaux.
+print poSet.getMinimumElements
 
 # Afficher les éléments plus grands qu'un élément.
 
