@@ -5,6 +5,15 @@ var poSet = new PartiallyOrderedSet()
 
 # Ajouter des éléments.
 
+var eltA = new Element("A")
+var eltB = new Element("B")
+
+poSet.addElement(eltA)
+poSet.addElement(eltB)
+
+poSet.addRelation(eltB, eltA)
+print poSet.isLower(eltA, eltB)
+
 # Lister les éléments.
 
 # Ajouter des relations.
