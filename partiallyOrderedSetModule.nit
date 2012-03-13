@@ -142,8 +142,8 @@ class PartiallyOrderedSet
 	end
 
 	redef fun ==(o) do
-		if not o.isa PartiallyOrderedSet then return false
-		if o.elements.size != elements.size then return false
+		if not o isa PartiallyOrderedSet then return false
+		if o.elements.length != elements.length then return false
 		for element in elements do
 			var testElement = o.getElementByName(element.name)
 			if testElement != null then

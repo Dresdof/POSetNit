@@ -36,10 +36,20 @@ class Element
 	end
 
 	redef fun to_s: String do
-		var str = "Element : " + name + "\n"
+		var str = name + " - "
+
+		if parents.is_empty then str+= "[vide" else str += "["
 		for parent in parents do
-			str += " - Parent : " + parent.name + "\n"
+			str += parent.name
 		end
+		str += "]"
+
+		if children.is_empty then str += "[vide" else str += "["
+		for child in children do
+			str += child.name
+		end
+		str += "]\n"
+
 		return str
 	end
 
