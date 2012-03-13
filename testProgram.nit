@@ -40,7 +40,6 @@ poSet.addRelation(eltG, eltF)
 poSet.addRelation(eltH, eltG)
 poSet.addRelation(eltI, eltH)
 
-
 # Lister les éléments.
 #print poSet
 
@@ -60,8 +59,10 @@ poSet.addRelation(eltI, eltH)
 #print poSet.getChildren(eltF)
 
 # Afficher les éléments directements plus grands qu'un élément.
+print eltJ.parents
 
 # Afficher les éléments directements plus petits qu'un élément.
+print eltA.children
 
 # Afficher les éléments maximaux d'un sous-ensemble donné.
 
