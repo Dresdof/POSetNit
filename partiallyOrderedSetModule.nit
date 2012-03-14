@@ -94,6 +94,34 @@ class PartiallyOrderedSet
 		end
 		return list
 	end
+	
+	fun getMaximumElementsFromSubset(list: List[Element]) : List[Element] do
+		var returnList = new List[Element]
+		for element in list do
+			if element.parents.is_empty then returnList.push(element) else
+				var hasParent = false
+				for parent in element.parents do
+					if list.has(parent) then hasParent = true
+				end
+				if not hasParent then returnList.push(element)
+			end
+		end
+		return returnList
+	end
+	
+	fun getMinimumElementsFromSubset(list: List[Element]) : List[Element] do
+		var returnList = new List[Element]
+		for element in list do
+			if element.children.is_empty then returnList.push(element) else
+				var hasChild = false
+				for child in element.children do
+					if list.has(child) then hasChild = true
+				end
+				if not hasChild then returnList.push(element)
+			end
+		end
+		return returnList
+	end
 
 	private fun recursiveFetchForParents(current: Element, response: List[Element]) do
 		if not current.parents.is_empty then
