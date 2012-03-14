@@ -53,23 +53,27 @@ class Element
 	redef fun ==(o) do
 		if not o isa Element or o is null then return false
 		if name != o.name then return false
-		if parents.length != o.parents.length then return false
-		if children.length != o.parents.length then return false
 
-		for myParent in parents do
-			var found = false
-			for hisParent in o.parents do
-				if hisParent.name == myParent.name then found = true
+		if not parents.is_empty then
+			if parents.length != o.parents.length then return false
+			for myParent in parents do
+				var found = false
+				for hisParent in o.parents do
+					if hasParent(hisParent) then found = true
+				end
+				if not found then return false
 			end
-			if not found then return false
 		end
 
-		for myChild in children do
-			var found = false
-			for hisChild in o.children do
-				if hisChild.name == myChild.name then found = true
+		if not children.is_empty then 
+			if children.length != o.children.length then return false
+			for myChild in children do
+				var found = false
+				for hisChild in o.children do
+					if hasChild(hisChild) then found = true
+				end
+				if not found then return false
 			end
-			if not found then return false
 		end
 		return true
 	end

@@ -105,7 +105,8 @@ for character in characters do
 	poSet2.addElement(new Element(character.to_s))
 end
 
-print "Création de poSet2, mêmes éléments et mêmes relations que poSet."
+print "Tester l'inclusion d'un ordre dans un autre :"
+print "poSet2 : mêmes éléments et relations que poSet."
 poSet2.addRelation(poSet2.elements[1], poSet2.elements[0]) # B < C
 poSet2.addRelation(poSet2.elements[2], poSet2.elements[0]) # C < A
 poSet2.addRelation(poSet2.elements[3], poSet2.elements[1]) # D < B
@@ -117,10 +118,10 @@ poSet2.addRelation(poSet2.elements[6], poSet2.elements[5]) # G < F
 poSet2.addRelation(poSet2.elements[7], poSet2.elements[6]) # H < G
 poSet2.addRelation(poSet2.elements[8], poSet2.elements[7]) # I < H
 
+
 var equality = poSet == poSet2
 print "poSet == poSet2 ? " + equality.to_s
 
-# Tester l'inclusion d'un ordre dans un autre.
 var poSet3 = new PartiallyOrderedSet
 
 print "Nouvel ensemble poSet3 : B D E J"
@@ -130,8 +131,9 @@ poSet3.addElement(poSet.elements[4]) # E
 poSet3.addElement(poSet.elements[9]) # J
 
 equality = poSet == poSet3
-print "poSet == poSet 3 ? : " + equality.to_s
+print "poSet == poSet 3 ? " + equality.to_s
 
+print ""
 print "poSet3 est-il inclus dans poSet ? : " + poSet.includes(poSet3).to_s 
 print "poSet est-il inclus dans poSet3 ? : " + poSet3.includes(poSet).to_s + "\n"
 

@@ -100,7 +100,6 @@ class PartiallyOrderedSet
 		end
 		return list
 	end
-
 	
 	# Returns elements without direct child
 	fun getMinimumElements: List[Element] do
@@ -230,7 +229,7 @@ class PartiallyOrderedSet
 			var testElement = o.getElementByName(element.name)
 			if testElement != null then
 				if testElement != element then return false
-			end
+			else return false
 		end
 		return true
 	end
