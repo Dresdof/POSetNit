@@ -1,30 +1,30 @@
-Travail pratique de programmation orientée objet :
-	Développer une bibliothèque manipulant des relations d'ordre partiel finis.
+  Travail pratique de programmation orientée objet :
+    Développer une bibliothèque manipulant des relations d'ordre partiel finis.
 
 La commande make compile et lance l'exécution du programme de tests.
 La cible du compilateur nit est potentiellement à modifier, selon l'emplacement sur votre machine.
-	NITC = /usr/bin/nit/bin/nitc
+    NITC = /usr/bin/nit/bin/nitc
 
 Le jeu de tests utilisé est un ensemble de 10 éléments, reliés de cette manière :
 
-			A
-		   / \
-		  B   C
-		 / \   \
-		D   E   F
-		 \ /   /
-		  J   G  
-			   \
-				H
-			   /
-			  I
+            A
+           / \
+          B   C
+         / \   \
+        D   E   F
+         \ /   /
+          J   G  
+               \
+                H
+               /
+              I
 
 Lors de la fusion, l'ensemble fusionné est celui-ci :
 
-			C
-		   /|\
+            C
+           /|\
           A K F
-			   \
-				L
+               \
+                L
 
 En respectant la règle de priorité lors des conflits, seulement deux éléments et relations sont ajoutés : K < C et L < F
