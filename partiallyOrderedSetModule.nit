@@ -12,10 +12,14 @@ class PartiallyOrderedSet
 		elements = new List[Element]
     end
 
-	# Adds an element to the set
+	# Adds an element to the set if it doesn't exist
+	# Returns false if the element has not been added
 	# Relations will be preserved
 	fun addElement(element: Element) do 
-		elements.push(element)
+		if getElementByName(element.name) == null then 
+			elements.push(element)
+			return true
+		else return false
 	end
 	
 	# Returns true if the element has been removed or false if the element has not been found
@@ -31,7 +35,7 @@ class PartiallyOrderedSet
 		if element != null then element.rename(newName) else return false
 		return true
 	end
-
+	
 	# Returns the first occurence of the name argument or null if no element found
 	fun getElementByName(elementName: String): nullable Element do
 		for element in elements do
@@ -44,7 +48,6 @@ class PartiallyOrderedSet
 	# The first argument is the child, the second is the parent
 	fun addRelation(lower: Element, higher: Element): Bool do
 		if not setHasBoth(lower, higher) then return false
-		
 		var parentAdded = false
 		var childAdded = false
 	
