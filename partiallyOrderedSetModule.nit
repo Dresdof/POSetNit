@@ -15,7 +15,7 @@ class PartiallyOrderedSet
 	# Adds an element to the set if it doesn't exist
 	# Returns false if the element has not been added
 	# Relations will be preserved
-	fun addElement(element: Element) do 
+	fun addElement(element: Element): Bool do 
 		if getElementByName(element.name) == null then 
 			elements.push(element)
 			return true
@@ -46,21 +46,17 @@ class PartiallyOrderedSet
 
 	# Adds a relation between two elements
 	# The first argument is the child, the second is the parent
+	# If conflict, the new relation replaces the old one
+	# Returns false if the relation exists
 	fun addRelation(lower: Element, higher: Element): Bool do
 		if not setHasBoth(lower, higher) then return false
-		var parentAdded = false
-		var childAdded = false
-	
-		for element in elements do
-			if parentAdded and childAdded then return true
-			if element == lower then 
-				element.addParent(higher)
-				parentAdded = true
-			end
-			if element == higher then 
-				element.addChild(lower)
-				childAdded = true
-			end
+
+		if not lower.hasParent(higher) and not higher.hasChild(lower) then 
+			lower.addParent(higher)
+			higher.addChild(lower)
+			if lower.hasChild(higher) then lower.children.remove(higher)
+			if higher.hasParent(lower) then higher.parents.remove(lower)
+			return true
 		end
 		return false
 	end
